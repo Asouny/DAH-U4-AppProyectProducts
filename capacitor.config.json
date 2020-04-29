@@ -1,0 +1,8 @@
+{
+  "appId": "io.ionic.starter",
+  "appName": "DAH-U4-AppProyectProducts",
+  "bundledWebRuntime": false,
+  "npmClient": "npm",
+  "webDir": "www",
+  "cordova": {}
+}

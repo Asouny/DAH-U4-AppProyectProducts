@@ -1,0 +1,7 @@
+{
+  "name": "DAH-U4-AppProyectProducts",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
