@@ -1,17 +1,54 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
+<ion-header >
+  <ion-toolbar color="primary">
     <ion-title>
-      Tab 1
+Registrar un producto
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 1</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <app-explore-container name="Tab 1 page"></app-explore-container>
+<ion-content padding>
+  <ion-grid>
+    <form class="ion-padding" [formGroup]="myForm">
+      <ion-row  justify-content-center>
+        <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
+          <div text-center>
+          </div>
+          <div padding>
+            <ion-item>
+              <ion-label>Nombre: </ion-label>
+              <ion-input formControlName="name" type="text"></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label>Precio: </ion-label>
+              <ion-input formControlName="coste" type="number"></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label>Ingredientes</ion-label>
+              <ion-toggle  formControlName="toggle" slot="start" color="tertiary" ></ion-toggle>
+            </ion-item>
+            <ion-item [disabled]="!myForm.get('toggle').value">
+              <ion-label>Ingrediente: </ion-label>
+              <ion-input  formControlName="ingredient" type="text" ></ion-input>
+              <ion-button color="tertiary"  (click)="addIngredient()">
+              <ion-icon  name="add-circle-outline"></ion-icon>
+            </ion-button>
+            </ion-item>
+            <ion-list *ngFor="let ing of ingredients; index as i">
+              <ion-item lines="none">
+                <ion-label>Ingrediente: {{ing}}</ion-label>
+    
+                <ion-button color="primary" (click)="deleteIngredient(i)" shape="round" >
+                  <ion-icon name="close-circle"></ion-icon>
+                </ion-button>
+              </ion-item>
+            </ion-list>
+          </div>
+          <div padding class="centrar">
+            <ion-button size="large" type="button" color="secondary" [disabled]="!myForm.valid" (click)="guardar()" expand="block">Guardar
+          </ion-button>
+          </div>
+        </ion-col>
+      </ion-row>
+    </form>
+  </ion-grid>
 </ion-content>
